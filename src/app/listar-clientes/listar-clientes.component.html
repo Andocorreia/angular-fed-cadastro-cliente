@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="header">Lista de Clientes Cadastrados</h2>
+  <table class="table">
+    <thead>
+      <tr class="table-header">
+        <th >ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>CPF</th>
+        <th>Sexo</th>
+        <th>Estado Civil</th>
+        <th>Telefone</th>
+        <th>Nascimento</th>
+        <th>Cadastro</th>
+        <th>Status</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.id }}</td>
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.cpf | cpfFormat}}</td>
+        <td>{{ getSexo(cliente.sexo) }}</td>
+        <td>{{ getEstadoCivil(cliente.estadoCivil) }}</td>
+        <td>{{ cliente.telefone | telefoneFormat}}</td>
+        <td>{{ formatDate(cliente.dataNascimento) }}</td>
+        <td>{{ formatDate(cliente.dataCadastro) }}</td>
+        <td>{{ getStatusCliente(cliente.status) }}</td>
+        <td>
+          <tr>
+            <td>
+              <img class="image" src="assets/detalhes.png" alt="Detalhes" (click)="getDetalhesCliente(cliente.id)">
+            </td>
+            <td>
+              <img class="image" src="assets/editar.png" alt="Editar" (click)="editarCliente(cliente.id)">
+            </td>
+            <td>
+              <img class="image" src="assets/excluir.png" alt="Excluir" (click)="excluirCliente(cliente.id)">
+            </td>
+          </tr>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn" (click)="novoCliente()">Novo Cliente</button>
+</div>
+
