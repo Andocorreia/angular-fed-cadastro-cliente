@@ -1,1 +1,11 @@
-<p>alterar-clientes works!</p>
+<div class="detalhes-cliente">
+
+  <app-cliente-base titulo="Alterar o Cliente" [id]=id [formularioEditavel]="true">
+    <div>
+      <button class="btn" (click)="voltar()">Voltar</button>
+      <button class="btn" (click)="alterar()">Alterar o Cliente</button>
+
+    </div>
+  </app-cliente-base>
+
+</div>

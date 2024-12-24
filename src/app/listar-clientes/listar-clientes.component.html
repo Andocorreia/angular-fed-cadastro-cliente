@@ -1,5 +1,6 @@
 <div class="container">
   <h2 class="header">Lista de Clientes Cadastrados</h2>
+  <button class="btn" (click)="novoCliente()">Novo Cliente</button>
   <table class="table">
     <thead>
       <tr class="table-header">
@@ -25,8 +26,8 @@
         <td>{{ getSexo(cliente.sexo) }}</td>
         <td>{{ getEstadoCivil(cliente.estadoCivil) }}</td>
         <td>{{ cliente.telefone | telefoneFormat}}</td>
-        <td>{{ formatDate(cliente.dataNascimento) }}</td>
-        <td>{{ formatDate(cliente.dataCadastro) }}</td>
+        <td>{{ cliente.dataNascimento | dataFormat }}</td>
+        <td>{{ cliente.dataCadastro | dataFormat }}</td>
         <td>{{ getStatusCliente(cliente.status) }}</td>
         <td>
           <tr>
@@ -44,7 +45,5 @@
       </tr>
     </tbody>
   </table>
-
-  <button class="btn" (click)="novoCliente()">Novo Cliente</button>
 </div>
 

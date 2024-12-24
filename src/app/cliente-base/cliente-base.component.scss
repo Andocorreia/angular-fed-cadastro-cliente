@@ -1,0 +1,52 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens se movam para uma nova linha se necessário */
+}
+
+.form-group {
+  flex: 1 1 45%; /* Cada grupo ocupa aproximadamente 45% da largura */
+  margin: 10px; /* Margem para espaçamento */
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.endereco {
+  width: 100%; /* A seção de endereço ocupa toda a largura */
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #e9f7ef;
+}
+
+.endereco .form-group {
+  border: none;
+}
+
+.endereco label {
+  color: #2c662d;
+}
+
+h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}

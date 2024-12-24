@@ -1,0 +1,119 @@
+<div class="container">
+  <h2>{{ titulo }}</h2>
+  <div class="form-container">
+    <div class="form-group">
+      <label>ID:</label>
+      <p>{{ cliente.id }}</p>
+    </div>
+    <div class="form-group">
+      <label>Nome:</label>
+      <p>{{ cliente.nome }}</p>
+    </div>
+    <div class="form-group">
+      <label>CPF:</label>
+      <p>{{ cliente.cpf | cpfFormat }}</p>
+    </div>
+    <div class="form-group">
+      <label>Email:</label>
+      <p *ngIf="!formularioEditavel">{{ cliente.email }}</p>
+      <div *ngIf="formularioEditavel">
+        <input [(ngModel)]="cliente.email" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Telefone:</label>
+      <p *ngIf="!formularioEditavel">{{ cliente.telefone | telefoneFormat}}</p>
+      <div *ngIf="formularioEditavel">
+        <input [(ngModel)]="cliente.telefone"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Sexo:</label>
+      <p *ngIf="!formularioEditavel">{{ getSelectedSexo() }}</p>
+      <div *ngIf="formularioEditavel">
+        <select [(ngModel)]="cliente.sexo">
+          <option *ngFor="let sexo of getComboSexo()" [value]="sexo.code">{{ sexo.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Data de Nascimento:</label>
+      <p *ngIf="!formularioEditavel">{{ cliente.dataNascimento | dataFormat }}</p>
+      <div *ngIf="formularioEditavel">
+        <input [(ngModel)]="cliente.dataNascimento" type="date"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Estado Civil:</label>
+      <p *ngIf="!formularioEditavel">{{ getSelectedEstadoCivil() }}</p>
+      <div *ngIf="formularioEditavel">
+        <select [(ngModel)]="cliente.estadoCivil" >
+          <option *ngFor="let estado of getComboEstadosCivis()" [value]="estado.code">{{ estado.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Status:</label>
+      <p>{{ getStatus() }} </p>
+    </div>
+    <div class="endereco">
+      <div class="form-group">
+          <label><h3>Endereço:</h3></label>
+      </div>
+      <div>
+        <div class="form-group" *ngIf="cliente?.endereco">
+          <div>
+            <label><b>CEP:</b></label>
+            <p *ngIf="!formularioEditavel">{{ cliente.endereco.cep | cepFormat}} </p>
+            <div>
+              <input *ngIf="formularioEditavel" [(ngModel)]="cliente.endereco.cep" />
+            </div>
+          </div>
+          <div>
+            <label><b>Rua:</b></label>
+            <p *ngIf="!formularioEditavel">{{ cliente.endereco.rua }} </p>
+            <div>
+              <input *ngIf="formularioEditavel" [(ngModel)]="cliente.endereco.rua" />
+            </div>
+          </div>
+          <div>
+            <label><b>Número:</b></label>
+            <p *ngIf="!formularioEditavel">{{ cliente.endereco.numero }} </p>
+            <div>
+              <input *ngIf="formularioEditavel" [(ngModel)]="cliente.endereco.numero"  />
+            </div>
+          </div>
+          <div>
+            <label><b>Complemento:</b></label>
+            <p *ngIf="!formularioEditavel">{{ cliente.endereco.complemento }}</p>
+            <div>
+              <input *ngIf="formularioEditavel" [(ngModel)]="cliente.endereco.complemento" />
+            </div>
+          </div>
+          <div>
+            <label><b>Bairro:</b></label>
+            <p *ngIf="!formularioEditavel">{{ cliente.endereco.bairro }} </p>
+            <div>
+              <input *ngIf="formularioEditavel" [(ngModel)]="cliente.endereco.bairro"  />
+            </div>
+          </div>
+          <div>
+            <label><b>Cidade:</b></label>
+            <p *ngIf="!formularioEditavel"> {{ cliente.endereco.cidade }} </p>
+            <div>
+              <input *ngIf="formularioEditavel" [(ngModel)]="cliente.endereco.cidade" />
+            </div>
+          </div>
+          <div>
+            <label><b>Estado:</b></label>
+            <p *ngIf="!formularioEditavel"> {{ cliente.endereco.estado }} </p>
+            <div>
+              <input *ngIf="formularioEditavel" [(ngModel)]="cliente.endereco.estado"  />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

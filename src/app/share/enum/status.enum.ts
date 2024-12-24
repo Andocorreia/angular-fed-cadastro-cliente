@@ -1,5 +1,5 @@
 export enum Status {
-  A = 'ATIVO',
-  I = 'INATIVO',
-  E = 'EXCLUIDO'
+  A = 'Ativo',
+  I = 'Inativo',
+  E = 'Excluído'
 }

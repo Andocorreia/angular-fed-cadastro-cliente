@@ -1,1 +1,77 @@
-<p>cadastrar-clientes works!</p>
+<form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+  <h2>Cadastro de Clientes</h2>
+
+  <div>
+    <label>Nome:</label>
+    <input formControlName="nome" required>
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input formControlName="email" required>
+  </div>
+
+  <div>
+    <label>CPF:</label>
+    <input formControlName="cpf" required>
+  </div>
+
+  <h3>Endereço</h3>
+  <div formGroupName="endereco">
+    <div>
+      <label>CEP:</label>
+      <input formControlName="cep" required>
+    </div>
+    <div>
+      <label>Rua:</label>
+      <input formControlName="rua" required>
+    </div>
+    <div>
+      <label>Número:</label>
+      <input formControlName="numero" required>
+    </div>
+    <div>
+      <label>Complemento:</label>
+      <input formControlName="complemento">
+    </div>
+    <div>
+      <label>Bairro:</label>
+      <input formControlName="bairro" required>
+    </div>
+    <div>
+      <label>Cidade:</label>
+      <input formControlName="cidade" required>
+    </div>
+    <div>
+      <label>Estado:</label>
+      <input formControlName="estado" required>
+    </div>
+  </div>
+
+  <div>
+    <label>Telefone:</label>
+    <input formControlName="telefone" required>
+  </div>
+
+  <div>
+    <label>Sexo:</label>
+    <select formControlName="sexo" required>
+      <option *ngFor="let sexo of getComboSexo()" [value]="sexo.code">{{ sexo.name }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Data de Nascimento:</label>
+    <input type="date" formControlName="dataNascimento" required>
+  </div>
+
+  <div>
+    <label>Estado Civil:</label>
+    <select formControlName="estadoCivil" required>
+      <option *ngFor="let estado of getComboEstadosCivis()" [value]="estado.code">{{ estado.name }}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn" (click)="onSubmit()">Enviar</button>
+  <button type="button" class="btn" (click)="voltar()">Voltar</button>
+</form>

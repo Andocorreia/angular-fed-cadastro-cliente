@@ -8,13 +8,16 @@ import { Sexo } from '../share/enum/sexo.enum';
 import { CpfFormatPipe } from "../share/pipe/cpf.pipe";
 import { TelefoneFormatPipe } from "../share/pipe/telefone.pipe";
 import { Endereco } from '../share/models/endereco.model';
+import { Router } from '@angular/router';
+import { DataFormatPipe } from '../share/pipe/data.pipe';
 @Component({
   selector: 'app-listar-clientes',
   standalone: true,
   imports: [
     CommonModule,
     CpfFormatPipe,
-    TelefoneFormatPipe
+    TelefoneFormatPipe,
+    DataFormatPipe
 ],
   templateUrl: './listar-clientes.component.html',
   styleUrl: './listar-clientes.component.scss'
@@ -24,7 +27,8 @@ export class ListarClientesComponent implements OnInit {
   clientes: Cliente[] | undefined;
 
   constructor(
-    private clienteService: ClientesService
+    private clienteService: ClientesService,
+    private router : Router
   ) {}
 
   ngOnInit() {
@@ -39,16 +43,6 @@ export class ListarClientesComponent implements OnInit {
         console.error('Erro ao buscar clientes:', error);
       }
     );
-  }
-
-  formatDate(date: string): string {
-    const regex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!regex.test(date)) {
-        throw new Error("Data inválida. O formato deve ser 'yyyy-MM-dd'.");
-    }
-    const [year, month, day] = date.split('-');
-
-    return `${day}/${month}/${year}`;
   }
 
   getStatusCliente(status: keyof typeof Status): string {
@@ -68,19 +62,19 @@ export class ListarClientesComponent implements OnInit {
   }
 
   getDetalhesCliente(id: number): void {
-    console.log('Detalhes cliente', id);
+    this.router.navigate(['/consulta-detalhes-clientes', id]);
   }
 
   editarCliente(id: number): void {
-    console.log('Editar cliente', id);
+    this.router.navigate(['/alterar-clientes', id]);
   }
 
   excluirCliente(id: number): void {
-    console.log('excluir cliente', id);
+    this.router.navigate(['/deletar-clientes', id]);
   }
 
   novoCliente(): void {
-    console.log('Novo cliente');
+    this.router.navigate(['/cadastrar-clientes']);
   }
 
 }

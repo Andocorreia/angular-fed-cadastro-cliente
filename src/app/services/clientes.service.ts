@@ -11,8 +11,23 @@ export class ClientesService {
 
   constructor(private http: HttpClient) { }
 
-  public getClientes(): Observable<Cliente[]> {
+  getClientes(): Observable<Cliente[]> {
     const url = `${environment.NODE_BFF_CADASTRO_CLIENTE}/clientes`;
     return this.http.get<Cliente[]>(url);
+  }
+
+  getClienteById(id: number): Observable<Cliente> {
+    const url = `${environment.NODE_BFF_CADASTRO_CLIENTE}/detalhe-cliente/${id}`;
+    return this.http.get<Cliente>(url);
+  }
+
+  deletarCliente(id: number): Observable<any> {
+    const url = `${environment.NODE_BFF_CADASTRO_CLIENTE}/deletar-cliente/${id}`;
+    return this.http.delete(url);
+  }
+
+  alterarCliente(cliente: Cliente): Observable<any> {
+    const url = `${environment.NODE_BFF_CADASTRO_CLIENTE}/atualizar-cliente`;
+    return this.http.put(url, cliente);
   }
 }
