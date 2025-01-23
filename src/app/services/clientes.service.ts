@@ -30,4 +30,9 @@ export class ClientesService {
     const url = `${environment.NODE_BFF_CADASTRO_CLIENTE}/atualizar-cliente`;
     return this.http.put(url, cliente);
   }
+
+  criarCliente(cliente: Cliente): Observable<any> {
+    const url = `${environment.NODE_BFF_CADASTRO_CLIENTE}/cadastrar-cliente`;
+    return this.http.post(url, cliente);
+  }
 }

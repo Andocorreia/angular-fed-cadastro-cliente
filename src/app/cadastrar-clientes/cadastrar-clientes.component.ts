@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EstadoCivil } from '../share/enum/estado-civil.enum';
 import { Sexo } from '../share/enum/sexo.enum';
 import { CommonModule } from '@angular/common';
+import { Cliente } from '../share/models/cliente.model';
+import { Cliente as ClienteClass } from '../share/models/cliente.model';
 
 @Component({
   selector: 'app-cadastrar-clientes',
@@ -53,7 +55,9 @@ export class CadastrarClientesComponent implements OnInit {
 
   onSubmit() {
     if (this.usuarioForm.valid) {
-       console.log('Formulário válido');
+      this.clienteService.criarCliente(this.convertCliente()).subscribe(() => {
+        this.router.navigate(['/']);
+      });
 
     } else {
       console.log('Formulário inválido');
@@ -64,5 +68,22 @@ export class CadastrarClientesComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  private convertCliente(): Cliente {
+    const cliente: Cliente ={
+      nome: this.usuarioForm.get('nome')!.value,
+      email: this.usuarioForm.get('email')!.value,
+      cpf: this.usuarioForm.get('cpf')!.value,
+      endereco: this.usuarioForm.get('endereco')!.value,
+      telefone: this.usuarioForm.get('telefone')!.value,
+      sexo: this.usuarioForm.get('sexo')!.value,
+      dataNascimento: this.usuarioForm.get('dataNascimento')!.value,
+      estadoCivil: this.usuarioForm.get('estadoCivil')!.value,
+      dataCadastro: new Date().toISOString(),
+      id: 0,
+      status: 'A'
+    };
+
+    return cliente;
+  }
 
 }
