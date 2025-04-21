@@ -2,6 +2,11 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
+# Integrações
+- FED : https://github.com/Andocorreia/angular-fed-cadastro-cliente
+- BFF : https://github.com/Andocorreia/node-bff-cadastro-cliente
+- SRV : https://github.com/Andocorreia/java-srv-cadastro-cliente
+
 ## Development server
 
 To start a local development server, run:
